@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste interactive</title>
+    <style>
+        li {
+            cursor: pointer;
+            padding: 10px;
+            list-style-type: decimal;
+            transition: transform 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <ol id="liste">
+        <li>Élément numéro 1</li>
+        <li>Élément numéro 2</li>
+        <li>Élément numéro 3</li>
+        <li>Élément numéro 4</li>
+        <li>Élément numéro 5</li>
+    </ol>
+
+    <script>
+        function getRandomColor() {
+            return '#' + Math.floor(Math.random()*16777215).toString(16);
+        }
+
+        document.querySelectorAll("#liste li").forEach(li => {
+            li.addEventListener("click", function() {
+                this.style.color = getRandomColor();
+                this.style.transform = "scale(1.2)";
+                setTimeout(() => this.style.transform = "scale(1)", 300);
+            });
+        });
+    </script>
+</body>
+</html>

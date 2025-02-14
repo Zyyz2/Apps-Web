@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestionnaire de Todo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <h2>Todo Manager :</h2>
+            <label for="todoName">Name :</label>
+            <input type="text" id="todoName">
+            <label for="todoContent">Content :</label>
+            <input type="text" id="todoContent">
+            <button onclick="addTodo()">Add Todo</button>
+        </div>
+        <div class="todo-list-container">
+            <h3>Todo List :</h3>
+            <ul id="todoList"></ul>
+        </div>
+    </div>
+    <script src="script.js" defer></script>
+</body>
+</html>
