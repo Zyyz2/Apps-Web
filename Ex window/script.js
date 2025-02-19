@@ -1,4 +1,3 @@
-// Configuration des niveaux de difficulté
 const DIFFICULTY_LEVELS = {
     FACILE: {
         maxAttempts: 10,
@@ -14,7 +13,6 @@ const DIFFICULTY_LEVELS = {
     }
 };
 
-// Variables du jeu
 let gameState = {
     targetNumber: 0,
     attemptsLeft: 0,
@@ -22,7 +20,6 @@ let gameState = {
     gameOver: false
 };
 
-// Éléments du DOM
 const difficultySection = document.getElementById('difficulty-selection');
 const gameSection = document.getElementById('game-section');
 const attemptsDisplay = document.getElementById('attempts');
@@ -31,7 +28,6 @@ const guessInput = document.getElementById('guess-input');
 const messageDisplay = document.getElementById('message');
 const resetButton = document.getElementById('reset-btn');
 
-// Démarrer une nouvelle partie
 function startGame(difficulty) {
     const level = DIFFICULTY_LEVELS[difficulty];
     
@@ -42,7 +38,6 @@ function startGame(difficulty) {
         gameOver: false
     };
 
-    // Mise à jour de l'interface
     difficultySection.classList.add('hidden');
     gameSection.classList.remove('hidden');
     resetButton.classList.add('hidden');
@@ -55,7 +50,6 @@ function startGame(difficulty) {
     console.log(`Nombre à deviner: ${gameState.targetNumber}`); // Pour le débogage
 }
 
-// Vérifier la tentative du joueur
 function makeGuess() {
     if (gameState.gameOver) return;
 
@@ -84,37 +78,31 @@ function makeGuess() {
     guessInput.focus();
 }
 
-// Afficher un message
 function showMessage(text, type) {
     messageDisplay.textContent = text;
     messageDisplay.className = `message ${type}`;
 }
 
-// Gérer la victoire
 function gameWon() {
     showMessage('Félicitations ! Vous avez trouvé le nombre !', 'success');
     endGame();
 }
 
-// Gérer la défaite
 function gameLost() {
     showMessage(`Game Over ! Le nombre était ${gameState.targetNumber}`, 'error');
     endGame();
 }
 
-// Terminer la partie
 function endGame() {
     gameState.gameOver = true;
     resetButton.classList.remove('hidden');
 }
 
-// Réinitialiser le jeu
 function resetGame() {
     difficultySection.classList.remove('hidden');
     gameSection.classList.add('hidden');
 }
 
-// Écouteur d'événement pour la touche Entrée
 guessInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         makeGuess();
